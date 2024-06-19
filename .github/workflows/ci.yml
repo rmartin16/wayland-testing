@@ -40,7 +40,8 @@ jobs:
     - name: Install Dependencies
       run: |
         sudo apt update
-        sudo apt install -y sway libwayland-dev wayland-utils  # weston libwayland-client0 libwayland-server0 libglx-mesa0 libegl1 mesa-utils-extra
+        #sudo apt install -y sway libwayland-dev wayland-utils  # weston libwayland-client0 libwayland-server0 libglx-mesa0 libegl1 mesa-utils-extra
+        sudo apt install -y mutter
         sudo apt install -y pkg-config python3-dev libgirepository1.0-dev libcairo2-dev gir1.2-webkit2-4.1 libjpeg-dev
 
     - name: Wayland
@@ -49,13 +50,17 @@ jobs:
       run: |
         #sudo weston --backends
         #sudo weston --no-config --socket=wayland-1 --width 2048 --height 1536 --backend headless &
-        sway -d -V &
+        #sway -d -V &
         
-        sleep 3
+        Xvfb :99 -screen 0 2048x1536x24 &
+        sleep 1
+        DISPLAY=:99 mutter --nested --wayland --no-x11 --wayland-display toga
+        
+        sleep 1
     
     - name: Run app
       env:
-        WAYLAND_DISPLAY: wayland-1
+        WAYLAND_DISPLAY: toga
       working-directory: testbed
       run: |
         wayland-info
