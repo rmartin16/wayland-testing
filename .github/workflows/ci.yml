@@ -35,8 +35,9 @@ jobs:
         sudo apt update
         sudo apt install -y weston sway meson libwayland-dev
 
-    - name: install
+    - name: wayland
       run: |
-        weston --backends
-        weston --no-config --socket=wl-test-env --width 2048 --height 1536 --backend headless
+        #weston --backends
+        #weston --no-config --socket=wl-test-env --width 2048 --height 1536 --backend headless
+        sway -d -V
 
