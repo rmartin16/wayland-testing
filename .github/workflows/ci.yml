@@ -14,7 +14,7 @@ concurrency:
 
 defaults:
   run:
-    shell: bash
+    shell: bash --noprofile --norc -x -e -o pipefail {0}
 
 env:
   FORCE_COLOR: "1"
@@ -30,10 +30,13 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: wayland
+    - name: install
       run: |
         sudo apt update
-        sudo apt install -y weston
+        sudo apt install -y weston sway meson libwayland-dev
+
+    - name: install
+      run: |
         weston --backends
         weston --no-config --socket=wl-test-env --width 2048 --height 1536 --backend headless
 
