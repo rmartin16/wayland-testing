@@ -30,8 +30,7 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Test
-      id: test
+    - name: wayland
       run: |
-        echo "Hello world"
+        echo $XDG_SESSION_TYPE
 
