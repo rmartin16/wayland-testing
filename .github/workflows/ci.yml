@@ -33,15 +33,15 @@ jobs:
     - name: Install
       run: |
         sudo apt update
-        sudo apt install -y weston sway meson libwayland-dev wayland-utils
+        sudo apt install -y weston sway libwayland-dev wayland-utils
 
     - name: Wayland
       env:
         WLR_BACKENDS: headless
       run: |
-        #weston --backends
-        #weston --no-config --socket=wl-test-env --width 2048 --height 1536 --backend headless
-        sway -d -V &
+        weston --backends
+        weston --no-config --socket=wayland-1 --width 2048 --height 1536 --backend headless
+        #sway -d -V &
     
     - name: Run app
       env:
