@@ -30,12 +30,14 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: install
+    - name: Install
       run: |
         sudo apt update
         sudo apt install -y weston sway meson libwayland-dev
 
-    - name: wayland
+    - name: Wayland
+      env:
+        WLR_BACKENDS: headless
       run: |
         #weston --backends
         #weston --no-config --socket=wl-test-env --width 2048 --height 1536 --backend headless
