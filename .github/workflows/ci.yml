@@ -62,7 +62,5 @@ jobs:
       env:
         WAYLAND_DISPLAY: toga
       working-directory: testbed
-      run: |
-        wayland-info
-        briefcase run --test
+      run: briefcase run --test
 
