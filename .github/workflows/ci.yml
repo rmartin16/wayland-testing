@@ -61,5 +61,5 @@ jobs:
       working-directory: testbed
       run: |
         wayland-info
-        briefacse run --test
+        briefcase run --test
 
