@@ -32,5 +32,7 @@ jobs:
 
     - name: wayland
       run: |
-        echo $XDG_SESSION_TYPE
+        sudo apt update
+        sudo apt install -y weston
+        weston --no-config --socket=wl-test-env --width 2048 --height 1536 --backend headless
 
