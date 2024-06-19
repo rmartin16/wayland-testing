@@ -48,5 +48,5 @@ jobs:
     - name: Run app
       env:
         WAYLAND_DISPLAY: wayland-1
-      run: wayland-info
+      run: sudo wayland-info
 
