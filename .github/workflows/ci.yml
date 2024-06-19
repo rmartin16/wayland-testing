@@ -39,8 +39,8 @@ jobs:
       env:
         WLR_BACKENDS: headless
       run: |
-        sudo weston --backends
-        weston --no-config --socket=wayland-1 --width 2048 --height 1536 --backend headless
+        #sudo weston --backends
+        sudo weston --no-config --socket=wayland-1 --width 2048 --height 1536 --backend headless
         #sway -d -V &
     
     - name: Run app
