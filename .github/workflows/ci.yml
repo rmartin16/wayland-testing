@@ -29,6 +29,15 @@ jobs:
       uses: actions/checkout@v4.1.6
       with:
         fetch-depth: 0
+        repository: beeware/toga
+
+    - name: Set Up Python
+      uses: actions/setup-python@v5.1.0
+      with:
+        python-version: 3.x
+
+    - name: Install Briefcase
+      run: python -m pip install briefcase
 
     - name: Install
       run: |
@@ -40,13 +49,16 @@ jobs:
         WLR_BACKENDS: headless
       run: |
         #sudo weston --backends
-        sudo weston --no-config --socket=wayland-1 --width 2048 --height 1536 --backend headless &
-        #sway -d -V &
+        #sudo weston --no-config --socket=wayland-1 --width 2048 --height 1536 --backend headless &
+        sway -d -V &
         
         sleep 3
     
     - name: Run app
       env:
         WAYLAND_DISPLAY: wayland-1
-      run: sudo wayland-info
+      working-directory: testbed
+      run: |
+        wayland-info
+        briefacse run --test
 
