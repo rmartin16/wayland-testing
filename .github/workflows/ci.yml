@@ -54,8 +54,8 @@ jobs:
         
         Xvfb :99 -screen 0 2048x1536x24 &
         sleep 1
-        DISPLAY=:99 mutter --nested --wayland --no-x11 --wayland-display toga &
-        
+        DISPLAY=:99 MUTTER_DEBUG_DUMMY_MODE_SPECS=2048x1536 \
+          mutter --nested --wayland --no-x11 --wayland-display toga &
         sleep 1
     
     - name: Run app
