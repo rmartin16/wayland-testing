@@ -33,7 +33,7 @@ jobs:
     - name: Install
       run: |
         sudo apt update
-        sudo apt install -y weston sway meson libwayland-dev
+        sudo apt install -y weston sway meson libwayland-dev wayland-utils
 
     - name: Wayland
       env:
